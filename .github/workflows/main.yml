@@ -30,7 +30,7 @@ jobs:
           ${{ runner.os }}-pip-
     - name: Install dependencies
       run: |
-        pip install -e
+        pip install -e "https://github.com/aramns1089/scrapper_trial"
     - name: Install Playwright dependencies
       run: |
         python -m playwright install-deps
