@@ -640,6 +640,7 @@ def take_shot(
     quality = shot.get("quality")
     wait = shot.get("wait")
     padding = shot.get("padding") or 0
+    save_html = shot.get("save_html")
 
     selectors = shot.get("selectors") or []
     selectors_all = shot.get("selectors_all") or []
@@ -672,6 +673,10 @@ def take_shot(
             full_page = False
 
     page.goto(url)
+    text = page.content()
+    if save_html:
+        with open(save_html + ".html", 'w') as file:
+            file.write(text)
 
     if wait:
         time.sleep(wait / 1000)
