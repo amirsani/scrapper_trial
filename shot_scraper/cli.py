@@ -675,8 +675,12 @@ def take_shot(
     page.goto(url)
     text = page.content()
     if save_html:
-        with open(save_html + ".html", 'w') as file:
-            file.write(text)
+        if save_html.split('.')[-1] == 'html':
+            with open(save_html, 'w') as file:
+                file.write(text)
+        else: 
+            with open(save_html + ".html", 'w') as file:
+                file.write(text)
 
     if wait:
         time.sleep(wait / 1000)

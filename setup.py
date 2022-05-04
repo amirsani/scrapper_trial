@@ -13,7 +13,7 @@ def get_long_description():
 
 
 setup(
-    name="scrapper_trial",
+    name="shot_scraper",
     description="Tools for taking automated screenshots of websites",
     long_description=get_long_description(),
     long_description_content_type="text/markdown",
@@ -26,11 +26,12 @@ setup(
     },
     license="Apache License, Version 2.0",
     version=VERSION,
-    packages=["scrapper_trial"],
+    packages=["shot_scraper"],
     entry_points="""
         [console_scripts]
         shot-scraper=shot_scraper.cli:cli
-    """,
+        """
+    ,
     install_requires=["click", "PyYAML", "playwright", "click-default-group"],
     extras_require={"test": ["pytest", "cogapp", "pytest-mock"]},
     python_requires=">=3.7",
