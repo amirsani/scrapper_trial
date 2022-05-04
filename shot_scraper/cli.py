@@ -157,6 +157,7 @@ def shot(
     browser,
     user_agent,
     reduced_motion,
+    save_html=True,
 ):
     """
     Take a single screenshot of a page or portion of a page.
@@ -201,6 +202,7 @@ def shot(
         "timeout": timeout,
         "padding": padding,
         "retina": retina,
+        "save_html": save_html,
     }
     interactive = interactive or devtools
     with sync_playwright() as p:
