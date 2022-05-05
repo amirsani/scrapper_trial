@@ -187,7 +187,7 @@ def shot(
     if output is None:
         ext = "jpg" if quality else None
         output = filename_for_url(url, ext=ext, file_exists=os.path.exists)
-    shot = {
+    shot_settings = {
         "url": url,
         "selectors": selectors,
         "selectors_all": selectors_all,
@@ -229,14 +229,14 @@ def shot(
             if output == "-":
                 shot = take_shot(
                     context,
-                    shot,
+                    shot_settings,
                     return_bytes=True,
                     use_existing_page=use_existing_page,
                 )
                 sys.stdout.buffer.write(shot)
             else:
-                shot["output"] = str(output)
-                shot = take_shot(context, shot, use_existing_page=use_existing_page)
+                shot_settings["output"] = str(output)
+                shot = take_shot(context, shot_settings, use_existing_page=use_existing_page)
         except TimeoutError as e:
             raise click.ClickException(str(e))
         browser_obj.close()
